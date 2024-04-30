@@ -18,10 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from app_1 import views as views_1
 from app_2 import views as views_2
+from articles import views as articles
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app_1/',views_1.app_1,name='app_1'),
-    path('app_2/',views_2.app_2,name='app_2'),
+
+    path('articles/<int:year>/', articles.articles_by_year, name='articles_by_year'),
+    path('articles/<int:year>/<int:month>', articles.articles_by_year_month, name='articles_by_year_month'),
+    path('articles/2023/', articles.article_2023, name='article_2023'),
+    path('app_1/', views_1.app_1, name='app_1'),
+    path('app_2/', views_2.app_2, name='app_2'),
     path('', views_1.index, name='index'),
 ]

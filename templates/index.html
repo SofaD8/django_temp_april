@@ -6,9 +6,12 @@
 </head>
 <body>
     <ul>
-        <li><a href={% url 'index' %}>Home</a> </li>
-        <li><a href={% url 'app_1' %}>App 1</a> </li>
-        <li><a href={% url 'app_2' %}>App 2</a> </li>
+        
+        <li><a href={% url 'app_1:index' %}>App 1</a> </li>
+        <li><a href={% url 'app_2:index' %}>App 2</a> </li>
+        {% for item in years %}
+            <li><a href={% url 'articles_by_year' year=item %}>Articles {{ item }}</a></li>
+        {% endfor %}
     </ul>
 </body>
 </html>

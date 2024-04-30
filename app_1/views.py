@@ -3,9 +3,13 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def app_1(request):
+def index(request):
     return HttpResponse('<h1>App 1</h1>')
 
 
-def index(request):
-    return render(request, 'index.html')
+def main(request):
+    context = {
+        'years': (2020, 2021, 2022, 2023, 2024),
+    }
+
+    return render(request, 'index.html', context=context)
